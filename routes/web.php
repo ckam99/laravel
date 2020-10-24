@@ -15,17 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $user=\App\Models\User::find(2);
+    $product = $user->store->products->find(2);
+    //$product->characteristics->find(1)->properties;
+    $product->setAttribute('characteristics', $product->characteristics()->with('properties')->get());
 
-    $collection = collect([
-        ['brand' => 'Tesla',  'color' => 'red'],
-        ['brand' => 'Pagani', 'color' => 'white'],
-        ['brand' => 'Tesla',  'color' => 'black'],
-        ['brand' => 'Pagani', 'color' => 'orange'],
-    ]);
+    return $product;
     
-    $plucked = $collection->pluck('color', 'brand');
-    
-   return $plucked->all();
     dd($user->posts);
     return view('welcome');
 });
