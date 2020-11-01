@@ -12,11 +12,11 @@
 
         <style>
            #app {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  width: 50%;
-  margin: 50px auto;
-}
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        width: 50%;
+        margin: 50px auto;
+        }
         </style>
     
     </head>
