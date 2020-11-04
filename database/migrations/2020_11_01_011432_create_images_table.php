@@ -15,9 +15,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('ismain')->default(false);
-            $table->integer('index')->unsigned()->default(0);
+            $table->string('url');
+            $table->boolean('is_main')->default(false);
+            $table->integer('position')->unsigned()->default(0);
             $table->timestamps();
         });
     }

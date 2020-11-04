@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TweetController;
@@ -28,3 +29,5 @@ Route::get('/docs', function (Request $request) {
 });
 Route::get('/tweets', [TweetController::class, 'index'])->name('list-tweet');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('show-tweet');
+
+Route::post('/images', [ImageController::class, 'upload']);
