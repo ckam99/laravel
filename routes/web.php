@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Route::get('/c', function () {
+//     return 'hola';
+// })->middleware('auth');
 Route::get('/{page?}', function () {
     return view('welcome');
 })->where('page', '[\/\w\.-]*');
