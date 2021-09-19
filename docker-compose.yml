@@ -12,12 +12,12 @@ services:
     ports:
       - '5432:5432'
   app:
-    build: .
+    build: laravel
     container_name: laravel
     restart: always
     command: php artisan serve --host=0.0.0.0 --port=8000
     volumes: 
-      - ./src:/var/www/laravel
+      - ./laravel:/var/www/laravel
     ports:
       - 8000:8000
     depends_on:
@@ -32,6 +32,21 @@ services:
       RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
     ports:
       - 15672:15672
+
+  fastapi:
+    container_name: fastapi
+    build: fastapi
+    volumes:
+      - ./fastapi:/usr/src/app
+    restart: always
+    environment:
+      - DB_HOST=db
+      - DB_NAME=${DB_DATABASE}
+      - DB_USER=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+     - 8000:8000
 
 
 volumes: 
