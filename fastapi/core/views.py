@@ -1,6 +1,16 @@
 from tortoise.models import Model
-from tortoise.contrib.serializer import PydanticModel, pydantic_model_creator
+from tortoise.contrib.pydantic import PydanticModel, pydantic_model_creator
 from typing import Dict
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
+
+template = Jinja2Templates(directory='templates')
+
+
+def render(request: Request, template_name: str, context: dict = None, ):
+    context = {} if context is None else context
+    context['request'] = request
+    return template.TemplateResponse(template_name, context)
 
 
 class APIView():
